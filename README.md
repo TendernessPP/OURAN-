@@ -1,4 +1,4 @@
-# Vue2.0OURAN博客
+# Vue2.0 OURAN博客
 <hr>
 
 1、安装:
