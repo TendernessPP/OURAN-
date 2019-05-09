@@ -1,0 +1,30 @@
+/*** btn ***/
+// btn 模块全局变量
+$color-default = #ffffff
+$fontSize-default = .12rem
+$bgColor-default = #6646b6
+$paddingX-default = 0.3rem
+$paddingY-default = 0.06rem
+$borderRadius-default = 3px
+
+/**
+ * 初始 btn
+ * 参数为文字颜色、文字大小、背景颜色、横向 padding、纵向 padding、圆角大小
+ */
+initBtn($color = $color-default, $fontSize = $fontSize-default, $bgColor = $bgColor-default, $paddingX = $paddingX-default, $paddingY = $paddingY-default, $borderRadius = $borderRadius-default)
+  display flex
+  justify-content center
+  align-items center
+  cursor pointer
+  padding $paddingY $paddingX
+  color $color
+  font-size $fontSize
+  background-color $bgColor
+  border-radius $borderRadius
+
+/**
+ * 矩形 btn 无圆角
+ * 参数为文字颜色、文字大小、背景颜色、横向 padding、纵向 padding
+ */
+btnRect($color = $color-default, $fontSize = $fontSize-default, $bgColor = $bgColor-default, $paddingX = $paddingX-default, $paddingY = $paddingY-default)
+  initBtn($color, $fontSize, $bgColor, $paddingX, $paddingY, 0)

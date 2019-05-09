@@ -1,0 +1,20 @@
+/*** align ***/
+// 基于position的块级元素垂直居中
+.vertical-align-relative
+  position relative
+  height 100%
+  > .align-item
+    transform translateY(50%)
+
+.align-row
+  display flex
+
+// 垂直水平居中 - flex
+.align-center-vh-flex
+  display flex
+  align-items center
+  justify-content center
+
+// 水平居中 - margin
+.align-center-h-margin
+  margin 0 auto

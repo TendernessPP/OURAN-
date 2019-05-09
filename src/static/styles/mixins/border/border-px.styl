@@ -1,0 +1,32 @@
+_borderPx($direction = 'top', $px = 1px, $type = '', $color = rgba(0, 0, 0, 0.2), $isMobile = false)
+  position: relative
+  &:after
+    display: block
+    position: absolute
+    content: ' '
+    border-{$direction} $px solid $color
+    {$direction} 0
+
+  if $direction == 'top' || $direction == 'bottom'
+    &:after
+      left: 0
+      width: 100%
+    if $isMobile
+      _mediaTransformScale()
+  else
+    &:after
+      top: 0
+      height: 100%
+    if $isMobile
+      _mediaTransformScale('X')
+
+  if $type == 'tab' // 处理 tab 类型时开始或者结束 item 多出的 border
+    if $direction == 'top' || $direction == 'left'
+      &:first-child:after
+        border none
+    if $direction == 'bottom' || $direction == 'right'
+      &:last-child:after
+        border none
+
+borderPx($direction = 'top', $px = 1px, $type = '', $color = rgba(0, 0, 0, 0.2), $isMobile = false)
+  _borderPx($direction, $px, $type, $color, $isMobile)

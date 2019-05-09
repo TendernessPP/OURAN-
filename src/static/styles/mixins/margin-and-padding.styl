@@ -1,0 +1,21 @@
+// 生成如：.ml-5，.pl-5 的 css class
+initMg-Pd($widthList = ((5 left) (6 left)), $type = 'p')
+  $widthList = ($widthList ())
+  for $width in $widthList
+    if length($width) == 2
+      $shorthand = 'l' if $width[1] == left
+      $shorthand = 'r' if $width[1] == right
+      $shorthand = 't' if $width[1] == top
+      $shorthand = 'b' if $width[1] == bottom
+      $name = 'padding' if $type == 'p'
+      $name = 'margin' if $type == 'm'
+      {'.' + $type + $shorthand+'-' + $width[0]}
+        {$name + '-' + $width[1]} $width[0]px
+
+// 生成如：.ml-5 的 css class
+initMg($widthList = ((5 left)))
+  initMg-Pd($widthList, 'm')
+
+// 生成如：.pl-5 的 css class
+initPd($widthList = ((5 left)))
+  initMg-Pd($widthList, 'p')

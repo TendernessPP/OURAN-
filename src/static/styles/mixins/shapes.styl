@@ -1,0 +1,129 @@
+@import "./utils.styl"
+/*** 三角形 ***/
+$bgColor-default = #aeaeae
+$direction-default = bottom
+
+_triangleMain($bottom)
+  content ""
+  display inline-block
+  height 0
+  width 0
+  border ($bottom / 2) solid transparent
+
+/**
+ * 直角三角形
+ * 参数为 border 方向数组、高度、填充颜色
+ */
+triangleRightAngled($directions = top left, $bgColor = $bgColor-default, $height = 5px)
+  _triangleMain(2 * $height)
+  for $direction in $directions
+    {'border-' + $direction + '-color'} $bgColor
+    {'border-' + $direction + '-width'} $height
+
+/**
+ * 等腰三角形
+ * 参数为高、底边长、填充颜色、三角形底部所在方向
+ */
+triangleIsosceles($height = 5px, $bottom = 10px, $bgColor = $bgColor-default, $direction = $direction-default)
+  _triangleMain($bottom)
+  margin-{reverseDirection($direction)} 0 - $height
+  {'border-' + $direction + '-color'} $bgColor
+  {'border-' + $direction + '-width'} $height
+
+triangleIsoscelesTop($height = 5px, $bottom = 10px, $bgColor = $bgColor-default)
+  triangleIsosceles($height, $bottom, $bgColor, top)
+
+triangleIsoscelesBottom($height = 5px, $bottom = 10px, $bgColor = $bgColor-default)
+  triangleIsosceles($height, $bottom, $bgColor, bottom)
+
+triangleIsoscelesLeft($height = 5px, $bottom = 10px, $bgColor = $bgColor-default)
+  triangleIsosceles($height, $bottom, $bgColor, left)
+
+triangleIsoscelesRight($height = 5px, $bottom = 10px, $bgColor = $bgColor-default)
+  triangleIsosceles($height, $bottom, $bgColor, right)
+
+// 上下三角排序 icon
+iconTriangle2($bgColor = $bgColor-default, $triHeight = 5px, $triBottom = 10px)
+  display flex
+  flex-direction column
+  > i:first-child
+    margin-bottom 1px
+    triangleIsoscelesBottom($triHeight, $triBottom, $bgColor)
+  > i:last-child
+    triangleIsoscelesTop($triHeight, $triBottom, $bgColor)
+
+/*** 箭头 ***/
+/**
+ * 箭头
+ * 参数为三角形高、三角形底边长、矩形高、矩形宽、填充颜色、箭头指向
+ */
+arrow($triHeight = 5px, $triBottom = 10px, $rectHeight = 5px, $rectWidth = 5px, $bgColor = $bgColor-default, $direction = $direction-default)
+  display flex
+  flex-direction column
+  width $triBottom
+  &:before
+    content ""
+    display block
+    width $rectWidth
+    height $rectHeight
+    margin 0 auto
+    background $bgColor
+  &:after
+    content ""
+    display block
+    triangleIsosceles($triHeight, $triBottom, $bgColor, reverseDirection($direction))
+
+// 修改箭头颜色 仅限于三角形在上的箭头
+arrowColor($bgColor)
+  &:before
+    background-color $bgColor
+  &:after
+    border-top-color $bgColor
+
+/*** 加减号 ***/
+// 伪元素中的一条线
+pseudoLine($height = 5px, $bgColor = lightgreen, $borderRadius = 0)
+  content ''
+  position absolute
+  left 0
+  top 50%
+  transform translateY(-50%) rotate(0)
+  width 100%
+  height $height
+  background-color $bgColor
+  border-radius $borderRadius
+
+// 加号
+iconPlus($height = 5px, $bgColor = lightgreen, $borderRadius = 0, $width = 50%)
+  position relative
+  width $width
+  height 50%
+  align-self center
+  margin 0 auto
+  &:before, &:after
+    pseudoLine($height, $bgColor, $borderRadius)
+  &:after
+    transform translateY(-50%) rotate(90deg)
+
+// 减号
+iconMinus($height = 5px, $bgColor = lightgreen, $borderRadius = 0, $width = 50%)
+  position relative
+  width $width
+  height 50%
+  align-self center
+  margin 0 auto
+  &:before
+    pseudoLine($height, $bgColor, $borderRadius)
+
+// star text icon
+iconStarText($color-font = red)
+  position relative
+  &:before
+    content '*'
+    display block
+    position absolute
+    left -8px
+    top -3px
+    color $color-font
+    font-size 12px
+    font-weight 900

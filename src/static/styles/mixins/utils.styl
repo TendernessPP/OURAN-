@@ -1,0 +1,44 @@
+// 反转方向
+reverseDirection($direction)
+  return left if $direction == right
+  return right if $direction == left
+  return top if $direction == bottom
+  return bottom if $direction == top
+
+// inline-block 属性的 tabItem, 与 flex 相对应
+inlineBlockTabItem($padding = 0 0.18rem)
+  display block
+  .tab-item
+    display inline-block
+    padding $padding
+    .tab-item-text
+      display flex
+      height 100%
+      align-items center
+
+// 像 border 的一条线
+likeBorderLine($width = 90%, $height = 2px, $bottom = 5px, $bgColor = #ffffff)
+  position relative
+  &:before
+    position absolute
+    left 50%
+    transform translateX(-50%)
+    bottom $bottom
+    content ''
+    width $width
+    height $height
+    border-radius 1px
+    background-color $bgColor
+
+// 垂直水平居中
+alignXYPosition()
+  position absolute
+  top 50%
+  left 50%
+  transform translate(-50%, -50%)
+
+// 宽和高
+w-h($width, $height)
+  width $width
+  height $height
+

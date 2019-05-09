@@ -1,0 +1,47 @@
+@import "border-px.styl"
+// shadow 实现 border 1px
+border1pxBottom($color = rgba(0, 0, 0, 0.04))
+  box-shadow: 0 1px 0 $color;
+
+// 伪元素实现 border 1px
+_mediaTransformScale($axis = 'Y')
+  _scale($ratio, $axis)
+    if $axis == 'X' || $axis == 'x'
+      scaleX($ratio)
+    else
+      scaleY($ratio)
+  $scaleRatio = 0.75
+  @media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)
+    &::before
+      transform: _scale($scaleRatio, $axis)
+
+    &::after
+      transform: _scale($scaleRatio, $axis)
+
+  $scaleRatio = 0.5
+  @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2)
+    &::before
+      transform: _scale($scaleRatio, $axis)
+
+    &::after
+      transform: _scale($scaleRatio, $axis)
+
+border1px($direction = 'top', $type = '', $color = rgba(0, 0, 0, 0.2), $isMobile = false)
+  _borderPx($direction, 1px, $type, $color, $isMobile)
+
+.border-1px
+  border1px('top')
+
+.border-left-1px
+  border1px('left')
+
+.border-right-1px
+  border1px('right')
+
+.border-top-1px
+  border1px('top')
+
+.border-bottom-1px
+  border1px('bottom')
+
+

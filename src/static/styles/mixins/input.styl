@@ -1,0 +1,35 @@
+// input
+initInput($height = 30px, $border = 1px solid #e9e7e7, $paddingX = 4px, $paddingY = 8px)
+  input[type="text"], input[type='password']
+    height $height
+    border $border
+    padding-left $paddingX
+    padding-right $paddingX
+    padding-top $paddingY
+    padding-bottom $paddingY
+
+// input search
+initInputSearch($input-padding-right = 4px, $icon-search-width = 16px, $icon-position-left = 2px, $icon-position-right = $input-padding-right)
+  .input-search
+    padding-right ($icon-position-left + $icon-search-width + $icon-position-right) !important
+
+  .icon-search
+    position absolute
+    top 50%
+    right 0
+    transform translate(-($icon-position-right), -50%)
+
+// reset placeholder
+resetPlaceholder($color = #cccccc, $font-size = 12px)
+  ::-webkit-input-placeholder
+    color $color
+    font-size $font-size
+  :-moz-placeholder /* Firefox 18- */
+    color $color
+    font-size $font-size
+  ::-moz-placeholder /* Firefox 19+ */
+    color $color
+    font-size $font-size
+  :-ms-input-placeholder
+    color $color
+    font-size $font-size

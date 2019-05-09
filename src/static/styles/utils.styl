@@ -1,0 +1,198 @@
+@import "./varibales.styl"
+@import "./mixins.styl"
+/** 工具 **/
+// 清除浮动
+.clearfix
+  zoom: 1
+  &:before, &:after
+    display block
+    clear both
+    content ""
+    visibility hidden
+    height 0
+
+.w-200
+  width 200px
+
+.align-left
+  text-align left
+
+.align-right
+  text-align right
+
+.fl-right
+  float right
+
+.fl-left
+  float left
+
+.flex
+  display flex
+
+// 垂直的一条线
+.line-vertical
+  inlineBlockMiddle()
+  width 1px
+  height 100%
+  background #ccccc
+
+// 水平的一条线
+.line-horizontal
+  width 100%
+  height 1px
+  background-color #cccccc
+
+// 构造底部 bottom 效果
+.line-shadow {
+  box-shadow: $padding-left-default 1px 0 rgba(0, 0, 0, 0.03);
+}
+
+// 单行超出文本省略 ...
+.ellipsis
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+
+// 使子元素横向排列
+.direction-row
+  display flex
+  align-items center
+
+// y 方向滚动
+.scroll-y
+  overflow-y auto !important
+
+.vertical-top
+  vertical-align top
+
+.mb-none
+  margin-bottom none
+
+/** 形状 **/
+// 圆
+.circle
+  border-radius 50%
+
+// 圆滑
+.smooth-block
+  border-radius 0.03rem
+
+/** 样式 **/
+// 粗体
+.font-bolder
+  font-weight 700
+
+/** 字体 **/
+// 字体大小为0
+.font-0
+  font-size 0
+
+.font-12
+  font-size 12px
+
+.font-14
+  font-size 14px
+
+.font-16
+  font-size 16px
+
+// 字体粗细
+.fw-600
+  font-weight 600
+
+.text-normal
+  font-size 12px
+  font-weight normal
+  color $color-font-default
+
+/* 颜色 */
+.color-bg-white
+  background-color $color-white-default
+
+.color-bg-gray
+  background-color $color-bg-gray-default
+
+.color-font-red
+  color $color-red-font-color
+
+.color-font-gray
+  color $color-light-gray-font-color
+
+.color-bg-clack
+  background-color #222222
+
+// 强调文字
+.color-font-strong
+  color #59008f
+  font-weight 600
+
+.color-font-strong2
+  color #6137a0
+  font-weight 600
+
+// 遮盖层
+.mask
+  position absolute
+  top 0
+  bottom 0
+  left 0
+  right 0
+
+// 占位空白块
+.placeholder-block
+  display block
+  height 10px
+  background transparent
+
+// 分割块
+.split-block
+  @extend .placeholder-block
+  @extend .border-top-1px
+
+// 单位
+.unit
+  padding-right 0.04rem
+
+// cursor
+.cursor-pointer
+  cursor pointer !important
+
+.cursor-text
+  cursor text
+
+.cursor-default
+  cursor default
+
+// export-text
+.export-span
+  text-decoration underline
+  color #34495e
+  position absolute
+  right $padding-main-right-content
+  top 20px
+  cursor pointer
+
+.list-input-search
+  width 205px
+  >input
+    width 205px !important
+    height 32px !important
+    line-height 32px !important
+    border solid 1px #a4a4a4 !important
+    border-radius 6px
+  .form-input-operation
+    padding 0px 10px
+    .icon-search-wrapper
+      line-height 32px
+      font-size 15px
+      color: #cccccc
+    /*&:before
+      content ''
+      position absolute
+      left 0
+      top 50%
+      transform translateX(-50%) translateY(-50%)
+      display inline-block
+      height 20px
+      width 1px
+      background-color #bcbcbc*/

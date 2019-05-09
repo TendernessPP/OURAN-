@@ -1,0 +1,63 @@
+// 基础布局代码
+baseStyle-layout()
+  position relative
+  overflow hidden
+
+/*** 纵向布局 ***/
+/**
+ * 三列布局，上下固定，中间自适应
+ * 参数为 上高度、下高度、是否需要底部
+ */
+layout3TopBottomFixed($topHeight = 0.5rem, $bottomHeight = 0.5rem, $needBottom = true)
+  baseStyle-layout()
+  > div:nth-child(1)
+    position absolute
+    width 100%
+    height $topHeight
+  > div:nth-child(2)
+    position absolute
+    top: $topHeight // 对应 header 的高度
+    bottom: $bottomHeight // 对应 footer 的高度
+    width 100%
+  if $needBottom == true
+    > div:nth-child(3)
+      position absolute
+      bottom 0
+      width 100%
+      height $bottomHeight
+
+layout2TopFixed($topHeight = 0.5rem)
+  layout3TopBottomFixed($topHeight, 0, false)
+
+layout3TopBottomFixed-2($topHeight = 0.5rem, $bottomHeight = 0.5rem, $needBottom = true)
+  overflow hidden
+  display flex
+  flex-direction column
+  > div:nth-child(1)
+    height $topHeight
+  > div:nth-child(2)
+    flex 1
+    overflow hidden
+  if $needBottom == true
+    > div:nth-child(3)
+      height $bottomHeight
+
+layout2TopFixed-2($topHeight = 0.5rem)
+  layout3TopBottomFixed-2($topHeight, 0, false)
+
+/*** 横向布局 ***/
+/**
+ * 两列布局，左绝对定位，右自适应
+ * 参数为左宽度、中间间距
+ */
+layout2LeftAbsolute($leftWidth, $betweenPadding)
+  baseStyle-layout()
+  > div:nth-child(1)
+    position absolute
+    width $leftWidth
+    left 0
+    top 0
+    bottom 0
+  > div:nth-child(2)
+    width 100%
+    display flex

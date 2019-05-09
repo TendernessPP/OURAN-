@@ -1,0 +1,36 @@
+@import "./mixins/shapes.styl"
+// 等腰三角形
+.triangle-isosceles-top
+  triangleIsoscelesTop()
+
+.triangle-isosceles-bottom
+  triangleIsoscelesBottom()
+
+// 上下三角排序 icon
+.icon-triangle2
+  iconTriangle2(#a3abbe)
+
+// 箭头 指向底部
+.arrow-bottom
+  margin-top 1px
+  arrow(5px, 10px, 5px, 5px, #a3abbe)
+
+// 箭头 指向顶部
+.arrow-top
+  @extend .arrow-bottom
+  margin-top 0
+  transform rotate(180deg)
+
+// 加号
+.icon-plus-wrapper
+  display flex
+
+.icon-plus
+  iconPlus()
+
+// 减号
+.icon-minus-wrapper
+  display flex
+
+.icon-minus
+  iconMinus()

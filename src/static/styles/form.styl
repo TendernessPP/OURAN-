@@ -1,0 +1,227 @@
+@import "./mixins/input.styl"
+@import "./mixins/shapes.styl"
+@import "./varibales.styl"
+$paddingX = 4px
+$paddingY = 8px
+$inputHeight = 30px
+$checkboxWidth = 12px
+$inputWidth = 2.54rem
+/** input **/
+initInput($inputHeight, 1px solid $color-border-input, $paddingX, 0)
+
+initInputSearch($padding-right, 16px, 2px, 6px)
+
+// placeholder
+$color-font-placeholder = rgba(119, 118, 130, 0.3)
+resetPlaceholder($color-font-placeholder)
+.color-font-placeholder
+  color $color-font-placeholder
+
+input[disabled]
+  border none
+
+select, .select-custom, textarea, input[type="text"], input[type='password']
+  -width 100%
+  color #4a4453
+
+input[type='text'], input[type='password']
+  border 1px solid #a4a4a4
+  //border-radius 6px
+
+input[type="checkbox"], input[type="radio"], .radio-custom, .checkbox-custom
+  width $checkboxWidth
+  height $checkboxWidth
+  background-color #ffffff
+
+// input focus
+input:focus, .focus, textarea:focus
+  color #4a3358 !important
+  border-color $color-border-focus !important
+  background-color #fffefe !important
+
+select, .select-custom
+  line-height $inputHeight
+  height $inputHeight
+
+/** textarea **/
+
+textarea
+  min-height 1rem
+  padding $paddingY $paddingX
+  overflow hidden
+
+.textarea-wrapper
+  background $color-white-default
+  padding $paddingY $paddingX
+  border 1px solid $color-border-default
+  textarea
+    margin 0
+    padding 0
+    border none
+    overflow-y auto
+  .textarea-count
+    text-align right
+    margin-bottom -($paddingY)
+
+.product-edit-step-2
+  .bottom-form
+    .form-wrapper
+      border-color #dedbdb
+      background-color #f9f9f9
+
+.form-content.form-wrapper
+  padding 0.14rem 0.34rem 0.14rem
+
+.form-wrapper
+  background-color $color-white-default
+  padding 0rem $padding-main-right-content 0.24rem
+
+.form-part
+  .form-part-item
+    [class^=form]
+      > label
+        font-weight 700
+        display inline-block
+        line-height $inputHeight
+    .direction-row
+      //margin 0.1rem 0
+      > label // 定义横向左侧 label 宽度
+        width 1.3rem
+      input[type='text'], input[type='password'], select, .select-custom
+        width $inputWidth
+    .form-textarea
+      height auto
+      > label
+        align-self flex-start
+        line-height 1
+      .textarea-wrapper
+        width 8rem
+      .textarea-count
+        color $color-font-placeholder
+        padding-bottom 0.05rem
+        padding-right 0.04rem
+    .form-radio
+      .radios
+        > span
+          line-height $inputHeight + 5px
+    .time-picker, .form-datePicker
+      line-height $inputHeight
+      height $inputHeight
+    $necessaryIconStarColor = #ff6203
+    &.isNecessary
+      > div
+        > label
+          iconStarText($necessaryIconStarColor)
+    .form-upload-images
+      .image-item.isNecessary
+        .image-title
+          iconStarText($necessaryIconStarColor)
+
+.form-custom
+  .form-title
+    margin-top 0.1rem
+    margin-bottom 0.1rem
+    font-weight 700
+
+.form-search-select /deep/ .search-select-input
+  width $inputWidth
+  flex 0 0 $inputWidth
+
+/** 自定义 **/
+.masker
+  .form-part
+    .form-part-item, form-input-operation
+      color #4a4453
+      //[class^=form]
+      //  > label
+      //    font-weight 700
+      //    line-height 0.22rem
+      //    margin-top 0.2rem
+      //    margin-bottom 0.06rem
+      &:first-child
+        > div
+          > label
+            margin-top 0
+      .form-radio
+        .radios
+          > span
+            height 0.18rem
+            justify-content flex-start
+            padding-right 0.3rem
+            &:last-child
+              padding-right 0
+      .form-input
+        width 100%
+  .form-input-value-wrapper
+    width 2.7rem
+  input[type='text'], input[type='password'], select, .select-custom
+    width 2.6rem
+    height 0.32rem
+
+.form-search
+  $height = 0.26rem
+  inputStyle()
+    color #4a4453
+    height $height
+    line-height $height
+    width 1.7rem
+    @media screen and (max-width 1450px)
+      width 0.9rem
+  .form-part
+    display flex
+    align-items center
+    .form-part-item
+      .direction-row
+        margin 0
+        margin-right 0.2rem
+      > div
+        > label
+          font-weight normal
+          color #808080
+          display inline-block
+          line-height $height
+      .direction-row
+        > label // 定义横向左侧 label 宽度
+          margin-right 0.04rem
+          width auto
+        input[type='text'], input[type='password'], select, .select-custom
+          inputStyle()
+      .datepicker
+        inputStyle()
+
+    .form-select
+      .select-main
+        height $height
+
+.bottom-form
+  textarea.native, .textarea-wrapper
+    width $inputWidth !important
+    height $inputHeight
+    overflow-y auto
+
+/* input */
+$color-border = #666666
+$color-bg = #333333
+// radio
+.radio-custom
+  border-radius 50%
+  border 1px solid $color-border
+  display flex
+  justify-content center
+  align-items center
+  &.select
+    &:before
+      content ''
+      display block
+      border-radius 50%
+      width 60%
+      height @width
+      background-color $color-bg
+
+// checkbox
+.checkbox-custom
+  display flex
+  align-items center
+  justify-content center
+  border 1px solid $color-border
+  background-color $color-white-default

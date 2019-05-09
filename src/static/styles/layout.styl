@@ -1,0 +1,115 @@
+@import "./mixins/layout.styl"
+html
+  height 100%
+
+body
+  height 100%
+  overflow hidden
+  margin 0 auto
+  font-size 12px
+
+#app
+  position relative
+  height 100%
+
+.vue-template-root-wrap
+  position relative
+  height 100%
+
+.layout-wrapper
+  min-width 12.8rem
+  width 100%
+  margin 0 auto
+
+/*** 纵向 布局 ***/
+/** 上下固定，中间自适应滚动 布局 **/
+.layout-3-top-bottom-fixed
+  layout3TopBottomFixed-2(auto, auto)
+
+/** 上固定 布局 **/
+.layout-2-top-fixed
+  layout2TopFixed-2(auto)
+
+/** 上下自适应 下边高度决定上边高度 **/
+.layout-2-auto-bottom-first
+  display flex
+  flex-direction column
+  align-items center
+  > div:nth-child(1)
+    flex 1
+
+// 底部固定
+// 需要确定一下其相对父position元素
+.layout-fixed-bottom
+  position absolute
+  width 100%
+  bottom 0
+
+// 上下两栏 flex space-between 布局
+.layout-2-v-space-between
+  display flex
+  flex-direction column
+  justify-content space-between
+
+/*** 横向 布局 ***/
+// 右定宽
+.layout-2-right-fixed
+  display flex
+  > div:nth-child(1)
+    overflow hidden
+    flex 1
+  > div:nth-child(2)
+    overflow hidden
+
+// 左定宽
+.layout-2-left-fixed
+  display flex
+  > div:nth-child(1)
+    overflow hidden
+  > div:nth-child(2)
+    overflow hidden
+    flex 1
+
+// 左右自适应 右侧宽度决定左侧宽度
+.layout-2-auto-right-first
+  display flex
+  align-items center
+  > div:nth-child(1)
+    flex 1
+
+// 左右自适应 左侧宽度决定右侧宽度
+.layout-2-auto-left-first
+  display flex
+  > div:nth-child(2)
+    flex 1
+
+// 左右普通布局 分别在两侧
+.layout-2
+  display flex
+  justify-content space-between
+.layout-2-equal
+  > div
+    width 50%
+    float left
+/** 左右固定，中间自适应滚动 布局 **/
+.layout-3-left-right-fixed
+  display flex
+  align-items center
+  width 100%
+  > div:nth-child(1)
+    flex 0 0 0.1rem
+  > div:nth-child(2)
+    flex 1
+  > div:nth-child(3)
+    flex 0 0 0.1rem
+
+// 三列自适应布局 左右相当于定宽 中间自适应
+.layout-3-auto-left-right-first
+  display flex
+  align-items center
+  > div:nth-child(2)
+    flex 1
+
+// 两列布局，左绝对定位，右 margin-left 出左侧宽度后自适应，右出滚动条
+.layout-2-left-absolute
+  layout2LeftAbsolute(186px, 26px)

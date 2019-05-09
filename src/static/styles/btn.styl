@@ -1,0 +1,100 @@
+@import "./varibales.styl"
+@import "./mixins/btn.styl"
+$paddingX = 20px
+.btn
+  cursor pointer
+  height 26px
+
+.btn-login
+  initBtn(#ffffff, $font-size-s, #22a644, $paddingX, 0)
+  height 32px
+  &:hover
+    background-color #22a644
+
+.btn-create
+  initBtn(#ffffff, $font-size-s, #485d72, $paddingX)
+  height 32px
+  &:hover
+    background-color #485d72
+
+.btn-submit
+  initBtn(#ffffff, $font-size-s, #ea5300, $paddingX)
+  border-radius 10px
+  &:hover
+    background-color #ea5300
+
+.btn-cancel
+  initBtn(#ffffff, $font-size-s, #6b7987, $paddingX)
+  border-radius 10px
+  &:hover
+    background-color #6b7987
+
+.btn-underline
+  initBtn(#808080, $font-size-s, transparent, $paddingX)
+  text-decoration underline
+  &:hover
+    color $color-green-hover
+
+.btn-rect
+  btnRect($color-white-default, $font-size-s, $color-btn-main)
+
+.btn-notActive
+  $bg-color = #cccccc
+  background-color $bg-color
+  color $color-white-default
+  cursor not-allowed
+  &:hover
+    background-color $bg-color
+
+.btn-add
+  /*initBtn(#fff, 14px,#6544a9)*/
+  display flex
+  justify-content center
+  align-items center
+  cursor pointer
+  color: #ffffff
+  background: #6544a9
+  font-size: 14px
+  width: 205px
+  height: 34px
+  border-radius: 17px
+  border: solid 1px #e7e7e7
+  > div
+    display flex
+    .icon-plus
+      iconPlus(3px, #fff, 0, 0.13rem)
+      margin-left: 0.2rem
+  &.green
+    initBtn($color-white-default, 12px, $color-btn-green, $paddingX)
+    &:hover
+      background-color $color-green-hover
+    > div
+      .icon-plus
+        iconPlus(2px, $color-white-default, 0, 0.1rem)
+        margin-right 0.05rem
+  &.gray
+    border 1px solid #c9c7d1
+    initBtn(#a09ea9, 12px, #ffffff, 0.25rem)
+    > div
+      .icon-plus
+        iconPlus(3px, #a09ea9, 0, 0.13rem)
+        margin-right 0.05rem
+
+.text-click
+  cursor pointer
+  text-decoration underline
+  color #178a34 !important
+.text-status
+  text-decoration none
+  color #eaa512 !important
+  //&:hover
+  //  color #178a34 !important
+  //  text-decoration underline
+  //&.active
+  //  color #178a34 !important
+  //  text-decoration underline
+
+.btn-text
+  font-size 12px
+  @extend .text-click
+  color #34495e !important
